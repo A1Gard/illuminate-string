@@ -1,21 +1,21 @@
 [package]
-name = "illuminate-string"
+name = "illuminate-str"
 version = "0.3.0"
 edition = "2024"
 description = "A comprehensive Rust library for advanced string manipulation and processing."
 license = "MIT"
 
 [dependencies]
-regex = "1.10"
-unicode-segmentation = "1.10"
+regex = "1.12"
+unicode-segmentation = "1.13"
 unidecode = "0.3"
 base64 = "0.22"
-uuid = { version = "1.0", features = ["v4"] }
-ulid = "1.1"
+uuid = { version = "1", features = ["v4"] }
+ulid = "1.2"
 rand = "0.10"
 serde_json = "1.0"
 url = "2.5"
-chrono = { version = "0.4", features = ["serde"] }
 pulldown-cmark = "0.13"
 textwrap = "0.16"
-memchr = "2.7.5"
+memchr = "2.8.1"
+time = "0.3.47"

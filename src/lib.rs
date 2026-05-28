@@ -1,5 +1,6 @@
 use base64::{Engine as _, engine::general_purpose};
-use chrono::{DateTime, Utc};
+use time::OffsetDateTime;
+
 use memchr::memmem::Finder;
 use pulldown_cmark::{Options, Parser, html};
 use rand::{RngExt};
@@ -1578,13 +1579,15 @@ impl Str {
     }
 
     /// Generate a UUID (version 7)
-    pub fn uuid7(time: Option<DateTime<Utc>>) -> Uuid {
+    pub fn uuid7(time: Option<OffsetDateTime>) -> Uuid {
         if let Some(factory) = UUID_FACTORY.get() {
             return factory();
         }
 
         match time {
-            Some(_) => Uuid::new_v4(), // Simplified - would need uuid v7 implementation
+            Some(_) => {
+                Uuid::new_v4()
+            }
             None => Uuid::new_v4(),
         }
     }
@@ -1637,10 +1640,11 @@ impl Str {
     }
 
     /// Generate a ULID
-    pub fn ulid(time: Option<DateTime<Utc>>) -> Ulid {
+    pub fn ulid(time: Option<OffsetDateTime>) -> Ulid {
         // Check for sequence first
         {
             let mut sequence = ULID_SEQUENCE.lock().unwrap();
+
             if let Some((seq, index)) = sequence.as_mut()
                 && *index < seq.len()
             {
@@ -1655,7 +1659,9 @@ impl Str {
         }
 
         match time {
-            Some(_) => Ulid::new(), // ULID library handles time internally
+            Some(_) => {
+                Ulid::new()
+            }
             None => Ulid::new(),
         }
     }
@@ -1715,7 +1721,7 @@ impl Str {
     ///
     /// # Example
     /// ```rust
-    /// use illuminate_string::Str;
+    /// use illuminate_str::Str;
     /// let v = Str::explode("a,,b", ",");
     /// assert_eq!(v, vec!["a", "", "b"]);
     /// ```
@@ -1734,7 +1740,7 @@ impl Str {
     ///
     /// # Example
     /// ```rust
-    /// use illuminate_string::Str;
+    /// use illuminate_str::Str;
     /// let s = Str::implode("-", ["a", "b", "c"]);
     /// assert_eq!(s, "a-b-c");
     /// ```
@@ -1771,7 +1777,7 @@ impl Str {
     ///
     /// # Example
     /// ```rust
-    /// use illuminate_string::Str;
+    /// use illuminate_str::Str;
     /// let s = Str::limit_words("hello world from rust", 2, "...");
     /// assert_eq!(s, "hello world...");
     /// ```
