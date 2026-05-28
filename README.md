@@ -19,7 +19,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-illuminate-string = "0.3.0"
+illuminate-str = "0.3.0"
 ```
 
 ## Quick Start
@@ -214,7 +214,7 @@ All 47 tests cover the core functionality and edge cases.
 - `once_cell` - Thread-safe static initialization
 - `serde_json` - JSON validation
 - `url` - URL validation
-- `chrono` - Date/time handling
+- `time` - Date/time handling
 - `pulldown-cmark` - Markdown processing
 - `textwrap` - Text wrapping
 
@@ -249,6 +249,16 @@ Full Unicode support is provided through the `unicode-segmentation` crate, ensur
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Changelog
+
+### 0.3.0
+
+- upgrade crates
+- some important plural supported like: men, women, people, feet, dice, medium and etc.
+
+### 0.2.0
+
+- removed unused package
+- add limit_word, explode, implode function (high performance)
 
 ### 0.1.0
 

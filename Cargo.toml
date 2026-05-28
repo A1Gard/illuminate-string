@@ -4,6 +4,9 @@ version = "0.3.0"
 edition = "2024"
 description = "A comprehensive Rust library for advanced string manipulation and processing."
 license = "MIT"
+homepage = "https://github.com/A1Gard/illuminate-str"
+repository = "https://github.com/A1Gard/illuminate-str"
+keywords = ["string", "laravel", "illuminate"]
 
 [dependencies]
 regex = "1.12"
